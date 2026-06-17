@@ -1,13 +1,17 @@
 package giannibussoletti;
 
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 public class Application {
-    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("beu1s3g3");
+
+    public static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("beu1s3g3pu");
 
     public static void main(String[] args) {
-        System.out.println("gello");
+
+        EntityManager em = emf.createEntityManager();
+        System.out.println("Hello World!");
         // Nei database esistono diverse tipi di relazioni
         // in base a come le tabelle vengono collegate fra di loro
         // One-to-One (uno-a-uno)
