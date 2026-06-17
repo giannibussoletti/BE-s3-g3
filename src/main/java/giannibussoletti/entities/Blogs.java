@@ -2,6 +2,7 @@ package giannibussoletti.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -19,6 +20,13 @@ Blogs {
     @JoinColumn(name = "user_id", nullable = false)
     private User author;
 
+    @ManyToMany // Questa annotazione creerà una tabella di mezzo fra Blogs and Categories che verrà poi
+    // personalizzata con la @JoinTable
+    @JoinTable(name = "blogs_categories", joinColumns = @JoinColumn(name = "blog_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
+    // Join Table non è obbligatoria ma consigliata perché permette di personalizzare
+    // le caratteristiche della JunctionTable;
+    private List<Categories> categories;
+
 
     public Blogs() {
     }
@@ -28,6 +36,28 @@ Blogs {
         this.content = content;
         this.author = author;
     }
+
+    public List<Categories> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Categories> categories) {
+        this.categories = categories;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+
+    public String getTitle() {
+        return title;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
 
     @Override
     public String toString() {

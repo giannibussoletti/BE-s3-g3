@@ -6,6 +6,7 @@
         <class>giannibussoletti.entities.User</class>
         <class>giannibussoletti.entities.Document</class>
         <class>giannibussoletti.entities.Blogs</class>
+        <class>giannibussoletti.entities.Categories</class>
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/beu1s3g3"/>
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>
